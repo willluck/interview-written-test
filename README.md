@@ -68,3 +68,8 @@
 * 🆕 【手写原理】curry，new
 * 🆕 【力扣算法】palindromic-string，reverse-string
 * 🆕 【具体场景实现】memo
+
+### 1.2.0（2021-05-24）
+* 🆕 【手写原理】debounce，throttle
+* 🆕 【力扣算法】lengthOfLongestSubstring，twoSum
+* 🆕 【具体场景实现】es5-filter
