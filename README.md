@@ -73,3 +73,8 @@
 * 🆕 【手写原理】debounce，throttle
 * 🆕 【力扣算法】lengthOfLongestSubstring，twoSum
 * 🆕 【具体场景实现】es5-filter
+
+### 1.3.0（2021-05-27）
+* 🆕 【力扣算法】array-to-tree，three-sum
+* 🆕 【具体场景实现】retry-promise
+* 💄 【力扣算法】two-sum修改名字，length-of-longestSubstring修改名字
