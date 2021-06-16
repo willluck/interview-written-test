@@ -13,3 +13,19 @@ function myFilter(fn, context) {
 
     return filterArray;
 }
+
+// es5实现map方法
+function myMap(fn, context) {
+    const arr = [].slice.call(this);
+    const resArray = [];
+
+    for (let i = 0; i < arr.length; i += 1) {
+        if (!arr.hasOwnProperty(i)) {
+            continue;
+        }
+
+        resArray.push(fn.call(context, arr[i], i, this));
+    }
+
+    return resArray;
+}

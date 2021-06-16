@@ -78,3 +78,8 @@
 * 🆕 【力扣算法】array-to-tree，three-sum
 * 🆕 【具体场景实现】retry-promise
 * 💄 【力扣算法】two-sum修改名字，length-of-longestSubstring修改名字
+
+### 1.4.0（2021-06-16）
+* 🆕 【力扣算法】longest-common-prefix，lowest-common-ancestor
+* 🆕 【具体场景实现】es5实现map方法，path-get
+* 🆕 【手写原理】instanceof
