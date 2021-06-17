@@ -83,3 +83,7 @@
 * 🆕 【力扣算法】longest-common-prefix，lowest-common-ancestor
 * 🆕 【具体场景实现】es5实现map方法，path-get
 * 🆕 【手写原理】instanceof
+
+### 1.5.0（2021-06-17）
+* 🆕 【力扣算法】find-number-in-2d-array，min-array
+* 🆕 【手写原理】es5实现some,splice,reduce，利用reduce实现flat功能
