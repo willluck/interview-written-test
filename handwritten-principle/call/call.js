@@ -1,11 +1,8 @@
 // 手写实现Function.prototype.call
-Function.prototype.myCall = function (context) {
+Function.prototype.myCall = function (context, ...args) {
     if (typeof this !== 'function') {
         throw new Error('类型错误');
     }
-
-    // 拆分出参数
-    const args = [...arguments].slice(1);
 
     // 设置当前的执行对象
     const currentContent = context || window;

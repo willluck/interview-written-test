@@ -4,7 +4,7 @@
 const reverseList = head => {
     let pre = null;
     let cur = head;
-    let next = head.next;
+    let next = null;
 
     while (cur) {
         next = cur.next;

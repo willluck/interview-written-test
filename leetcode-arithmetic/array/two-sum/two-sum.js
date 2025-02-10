@@ -6,7 +6,7 @@ const twoSum = (nums, target) => {
         for (let i = 0; i < nums.length; i += 1) {
             const currentValue = currentMap.get(target - nums[i]);
             if (currentValue !== undefined) {
-                return [currentValue, nums[i]];
+                return [currentValue, i];
             }
             currentMap.set(nums[i], i);
         }

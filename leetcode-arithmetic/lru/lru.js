@@ -33,7 +33,6 @@ class MyLru {
         // 获取map的所有keys
         const keys = this.map.keys();
 
-        // 如果当前map的size超长了，需要从底部开始删除对象
         while (this.map.size > this.max) {
             // keys是迭代器，可以用next()方法迭代访问每一个对象
             this.map.delete(keys.next().value);

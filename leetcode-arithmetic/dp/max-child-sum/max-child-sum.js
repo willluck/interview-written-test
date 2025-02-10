@@ -6,13 +6,15 @@
 输入: [-2,1,-3,4,-1,2,1,-5,4]
 输出: 6
 解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。
+
+力扣53.最大子数组和
 */
 
 const maxSubArray = (nums) => {
   let sum = nums[0];
   let max = nums[0];
 
-  for (let i = i; i < nums.length; i += 1) {
+  for (let i = 1; i < nums.length; i += 1) {
     if (sum > 0) {
       sum += nums[i];
     } else {

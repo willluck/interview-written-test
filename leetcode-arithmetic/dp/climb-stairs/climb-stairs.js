@@ -5,6 +5,8 @@
 
 注意：给定 n 是一个正整数。
 
+来源：力扣70
+
 */
 
 const climbStairs = n => {

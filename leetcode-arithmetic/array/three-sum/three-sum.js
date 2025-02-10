@@ -1,4 +1,7 @@
-// 三数求和 对撞指针
+/**
+ * 三数求和 对撞指针
+ * 力扣：15
+ */
 const threeSum = (sendSums, target = 0) => {
     // 结果数组
     const res = [];
@@ -32,7 +35,7 @@ const threeSum = (sendSums, target = 0) => {
                         right -= 1;
                     }
                 } else {
-                    res.push(nums[i], nums[left], nums[right]);
+                    res.push([nums[i], nums[left], nums[right]]);
 
                     left += 1;
                     right -= 1;

@@ -10,6 +10,7 @@ function simpleThrottle(fn, wait) {
         canRun = false;
         setTimeout(() => {
             fn.apply(this.args);
+            canRun = true;
         }, wait);
     };
 }

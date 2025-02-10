@@ -1,11 +1,8 @@
 // 手写实现Function.prototype.apply
-Function.prototype.myApply = function (context) {
+Function.prototype.myApply = function (context, args) {
     if (typeof this !== 'function') {
         throw new Error('类型错误');
     }
-
-    // 拆分出参数
-    const args = [...arguments].slice(1);
 
     // 设置当前的执行对象
     const currentContent = context || window;
@@ -18,8 +15,8 @@ Function.prototype.myApply = function (context) {
 
     // 执行函数，apply和call的主要区别就在于参数传递
     let res = null;
-    if (arguments[1]) {
-        res = currentContent[fn](...arguments[1]);
+    if (args && Array.isArray(args)) {
+        res = currentContent[fn](...args);
     } else {
         res = currentContent[fn]();
     }

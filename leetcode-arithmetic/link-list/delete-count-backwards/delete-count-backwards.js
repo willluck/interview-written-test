@@ -1,4 +1,5 @@
 /*
+力扣：19
 给定一个链表，删除链表的倒数第 n 个节点，并且返回链表的头结点。
 
 示例：
@@ -15,11 +16,6 @@
  *     this.val = val;
  *     this.next = null;
  * }
- */
-/**
- * @param {ListNode} head
- * @param {number} n
- * @return {ListNode}
  */
 
 // 快慢指针  解决删除倒数第二个节点这类问题

@@ -1,7 +1,3 @@
-
-
-
-
 // 翻转二叉树
 const invertTree = root => {
     if (!root) {
@@ -27,7 +23,7 @@ const isValidBST = root => {
         }
         return dfs(currentRoot.left, minValue, currentRoot.val) && dfs(currentRoot.right, currentRoot.val, maxValue);
     };
-    return dfs(root, -Infinity, Infinity);
+    return dfs(root, Number.MIN_SAFE_INTEGER,, Number.MAX_SAFE_INTEGER);
 };
 
 // 判断平衡二叉树
@@ -108,7 +104,7 @@ const preorderTraversal = root => {
 };
 
 // 中序遍历的迭代实现
-const preorderTraversal = root => {
+const inorderTraversal = root => {
     const res = [];
     const stack = [];
     let cur = root;
@@ -309,7 +305,7 @@ function blanceAST(root) {
 
 // 二叉树的直径
 const diameterOfBinaryTree = root => {
-    let ans = 1;
+    let ans = 0;
 
     const deep = currentRoot => {
         if (!currentRoot) {
@@ -319,18 +315,22 @@ const diameterOfBinaryTree = root => {
         const left = deep(currentRoot.left);
         const right = deep(currentRoot.right);
 
-        ans = Math.max(ans, left + right + 1);
+        ans = Math.max(ans, left + right);
 
         return Math.max(left, right) + 1;
     };
 
     deep(root);
 
-    return ans - 1;
+    return ans;
 };
 
 // 二叉树的深度
 const maxDepth = root => {
+    if (!root) {
+        return 0;
+    }
+
     let nth = 0;
 
     const queue = [root];
@@ -339,14 +339,14 @@ const maxDepth = root => {
         let len = queue.length;
 
         while (len > 0) {
-            const pop = queue.shift();
+            const shiftValue = queue.shift();
 
-            if (pop.left) {
-                queue.push(pop.left);
+            if (shiftValue.left) {
+                queue.push(shiftValue.left);
             }
 
-            if (pop.right) {
-                queue.push(pop.right);
+            if (shiftValue.right) {
+                queue.push(shiftValue.right);
             }
             len -= 1;
         }
@@ -374,3 +374,43 @@ var buildTree = function (preorder, inorder) {
 
     return root;
 };
+
+
+// 给定一个二叉树根节点root，检查它是否轴对称
+const isMirror = (root1, root2) => {
+    if (root1 === null && root2 === null) {
+        return true;
+    } 
+
+    if (root1 === null || root2 === null || root1.val !== root2.val) {
+        return false;
+    }
+
+    return isMirror(root1.left, root2.right) && isMirror(root1.right, root2.left);
+}
+
+const isSymmetric = (root) => {
+    isMirror(root, root);
+}
+
+
+// 合并二叉树 leetcode 617. 合并二叉树
+const mergeTrees = (root1, root2) => {
+    if (!root1 && !root2) {
+        return null;
+    }
+
+    if (!root1) {
+        return root2;
+    }
+
+    if (!root2) {
+        return root1;
+    }
+
+    root1.val += root2.val;
+    root1.left = mergeTrees(root1.left, root2.left);
+    root1.right = mergeTrees(root1.right, root2.right);
+
+    return root1;
+}

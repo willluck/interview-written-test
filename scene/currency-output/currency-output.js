@@ -1,19 +1,38 @@
-// 有一个数组 [ 7, 8, 3, 5, 1, 2, 4, 3, 1 ]，写一个方法来“去重”并“输出从大到小”的“货币格式”。
-// 期望结果："8,754,321"
+// 实现数字格式化：JavaScript 中的千分位分隔技巧
 
-// 原数组
-const nums = [7, 8, 3, 5, 1, 2, 4, 3, 1];
-// 排序
-const sortNums = nums.sort((a, b) => a - b);
-// 去重
-const targetNums = [...new Set(sortNums)];
-// 转换字符串
-const targetStr = targetNums.join('');
-// 转换方法
-const dealNumber = money => {
-    if (!money) {
-        return '';
-    }
-    const temp = money.match(/(\d{1,3})/g);
-    return temp.join(',').split('').reverse().join('');
-};
+function formatNumberWithCommas(number) {
+    number += '';
+    let [integer, decimal] = number.split('.');
+    const doSplit = (num, isInteger = true) => {
+        if (num === '') return '';
+        if (isInteger) num = num.split('').reverse();
+        let str = [];
+        for (let i = 0; i < num.length; i++) {
+            if (i !== 0 && i % 3 === 0) str.push(',');
+            str.push(num[i]);
+        }
+        if (isInteger) return str.reverse().join('');
+        return str.join('');
+    };
+    integer = doSplit(integer);
+    decimal = doSplit(decimal, false);
+    return integer + (decimal === '' ? '' : '.' + decimal);
+}
+
+function formatNumberWithRegex(number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+function formatNumberWithToLocaleString(number) {
+    return number.toLocaleString();
+}
+
+function formatNumberWithLocale(number) {
+    let [integer, decimal = ''] = (number + '').split('.');
+    integer = (+integer).toLocaleString();
+    if (decimal === '') return integer;
+    decimal = decimal.split('').reverse().join('');
+    decimal = (+decimal).toLocaleString();
+    decimal = decimal.split('').reverse().join('');
+    return integer + '.' + decimal;
+}

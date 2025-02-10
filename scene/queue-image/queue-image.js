@@ -18,14 +18,21 @@ const loadImg = url => {
 };
 
 // 图片处理函数
-const dealWithImgs = imgs => {
-    const imgQueue = [];
+const dealWithImgs = async imgs => {
     for (let i = 0; i < imgs.length; i += 1) {
-        imgQueue.push(loadImg(imgs[i]));
+        await loadImage(imgs[i]);
     }
-    Promise.all(imgQueue)
-        .then(item => {})
-        .catch(err => {});
 };
 
 dealWithImgs(imgs);
+
+const imageUrls = [];
+
+// 或直接使用promise链式
+imageUrls.reduce((promise, url) => {
+    return promise.then(() =>
+        loadImg(url).then(() => {
+            console.log(`Loaded: ${url}`);
+        })
+    );
+}, Promise.resolve());
